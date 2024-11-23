@@ -21,7 +21,7 @@ function MenubarConsumer({ children, listMenuItem = [] }: {
                     <MenubarContent className='data-[state=open]:bg-darkslategrey border-0 shadow-sm shadow-darkslategrey data-[state=open]:text-whitegrey ' >
                         {listMenuItem?.at(0) && listMenuItem?.map((item, index) => {
                             return <div key={index}>
-                                <MenubarItem onClick={item?.handleClick}>{item.name}</MenubarItem>
+                                <MenubarItem onClick={item?.handleClick} className='base_gradient_background_hover hover:text-white'>{item.name}</MenubarItem>
                                 {item.seperator && index !== (listMenuItem.length - 1) && <MenubarSeparator className='bg-whitegrey opacity-30' />}
                             </div>
                         })}
