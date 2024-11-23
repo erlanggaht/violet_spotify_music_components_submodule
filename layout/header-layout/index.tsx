@@ -8,7 +8,7 @@ import Dot from '@/app/violet_spotify_music_components_submodule/dot'
 import MenubarConsumer, { TypeListMenuItem } from '../../menubar/menubar-consumer'
 import { useRouter } from 'next/navigation'
 import { signOut } from 'next-auth/react'
-
+import '../layout.css'
 function HeaderLayout() {
   return (
     <header className='flex w-full'>
@@ -16,7 +16,7 @@ function HeaderLayout() {
         <TitleHeader />
       </div>
 
-      <div className='flex-grow flex justify-center items-center pr-20'>
+      <div className='flex-grow flex justify-center items-center'>
         <div className='relative w-full'>
           <SearchInput />
         </div>
@@ -46,10 +46,9 @@ const SearchInput = () => {
   const [value, setValue] = useState('')
   return (
     <>
-      <Image src={'/icon/search.svg'} alt='sound' width={22} height={22} className='absolute top-4 left-5' />
       <Input
         placeholder='search music, artist, genre'
-        className='bg-darkslategrey rounded-search h-[53px] pl-16 text-sm capitalize placeholder:font-medium'
+        className='bg-darkslategrey rounded-search h-[53px] pl-20 text-sm capitalize placeholder:font-medium w-[90%] mx-auto searchInput text-whitegrey'
         onChange={(e) => setValue(e.target.value)}
         value={value}
       />
