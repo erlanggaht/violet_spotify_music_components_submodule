@@ -6,7 +6,7 @@
     "header header header" auto
     "leftSide body rightSide" 1fr
     "footer footer footer" auto
-    / 275px 1fr 275px;
+    / 333px 1fr 350px;
   gap: 8px;
 }
 
@@ -20,4 +20,13 @@
 /* Header */
 .title-header {
   @apply text-3xl font-bold 
+}
+
+
+/* Search */
+
+.searchInput {
+  @apply bg-search-icon bg-no-repeat;
+  background-position: 24px 14px;
+  background-size: 28px;
 }
