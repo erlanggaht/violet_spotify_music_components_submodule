@@ -5,6 +5,8 @@ import { Input } from '@/app/violet_spotify_music_components_submodule/input'
 import { Avatar, AvatarFallback, AvatarImage } from '@/app/violet_spotify_music_components_submodule/avatar'
 import { Bell } from 'lucide-react'
 import Dot from '@/app/violet_spotify_music_components_submodule/dot'
+import MenubarConsumer, { TypeListMenuItem } from '../../menubar/menubar-consumer'
+import { useRouter } from 'next/navigation'
 function HeaderLayout() {
   return (
     <header className='flex w-full'>
@@ -19,7 +21,7 @@ function HeaderLayout() {
       </div>
 
       <div className='flex-grow-0 flex items-center  w-header_right'>
-          <UserHeader/>
+        <UserHeader />
       </div>
     </header>
   )
@@ -55,23 +57,41 @@ const SearchInput = () => {
 
 // User Header
 const UserHeader = () => {
-  return (
-    <div className='flex gap-6 w-full'>
-      <Avatar height={52} width={52}>
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
+  const router = useRouter()
+  const listMenuItem: TypeListMenuItem = [
+    {
+      name: "Dashboard",
+      seperator: true,
+      handleClick: () => router.push('/')
+    },
+    {
+      name: "Settings",
+    },
+    {
+      name: "Logout",
+    }
+  ]
 
-      <div className='flex items-center justify-between w-full'>
-        <div className='w-full'>
-          <h2 className='text-xl'>Tarisa</h2>
-          <p className='text-xs leading-2 mt-1 text-whitegrey tracking-wider'>Blog Premium</p>
-        </div>
-        <div className='profile-area-icon relative'>
-          <Bell width={30} height={28} />
-          <Dot height={16} width={16} classNames='base_gradient_background absolute top-2.5 -right-1' />
+  return (
+    <MenubarConsumer listMenuItem={listMenuItem}>
+      <div className='flex gap-6 w-full'>
+        <Avatar height={52} width={52}>
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+
+
+        <div className='flex items-center justify-between w-full text-left'>
+          <div className='w-full'>
+            <h2 className='text-xl'>Tarisa</h2>
+            <p className='text-xs leading-2 mt-1 text-whitegrey tracking-wider'>Blog Premium</p>
+          </div>
+          <div className='profile-area-icon relative'>
+            <Bell width={30} height={28} />
+            <Dot height={16} width={16} classNames='base_gradient_background absolute top-2.5 -right-1' />
+          </div>
         </div>
       </div>
-    </div>
+    </MenubarConsumer>
   )
 }
