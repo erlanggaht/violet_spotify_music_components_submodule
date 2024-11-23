@@ -7,6 +7,8 @@ import { Bell } from 'lucide-react'
 import Dot from '@/app/violet_spotify_music_components_submodule/dot'
 import MenubarConsumer, { TypeListMenuItem } from '../../menubar/menubar-consumer'
 import { useRouter } from 'next/navigation'
+import { signOut } from 'next-auth/react'
+
 function HeaderLayout() {
   return (
     <header className='flex w-full'>
@@ -69,6 +71,7 @@ const UserHeader = () => {
     },
     {
       name: "Logout",
+      handleClick: () => signOut()
     }
   ]
 
