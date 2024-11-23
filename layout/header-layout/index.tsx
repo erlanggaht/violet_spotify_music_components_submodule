@@ -12,7 +12,7 @@ import { signOut } from 'next-auth/react'
 function HeaderLayout() {
   return (
     <header className='flex w-full'>
-      <div className='flex-grow-0 flex items-center w-header_left'>
+      <div className='flex-grow-0 flex px-4 items-center w-header_left'>
         <TitleHeader />
       </div>
 
