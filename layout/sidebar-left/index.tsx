@@ -1,11 +1,11 @@
 import React from 'react'
 import Line from '@/app/violet_spotify_music_components_submodule/line'
 import Link from 'next/link'
-import { Heart, LayoutDashboard, MessageSquareMore, Smartphone, User, Users } from 'lucide-react'
+import { Headset, Heart, LayoutDashboard, MessageSquareMore, Settings, Smartphone, User, Users } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
-function Sidebar() {
+function SidebarLeft() {
   return (
     <aside className='mt-14'>
       {/* Menu */}
@@ -45,7 +45,7 @@ function Sidebar() {
   )
 }
 
-export default Sidebar;
+export default SidebarLeft;
 
 export type TypeSidebarItem = {
   name: string,
@@ -87,12 +87,12 @@ export const sidebarMenuItem: TypeSidebarItem = [
 export const sidebarMenuAboutItem: TypeSidebarItem = [
   {
     name: "Settings",
-    iconName: <User width={20} height={20} />,
+    iconName: <Settings width={20} height={20} />,
     href: '/settings'
   },
   {
     name: "FAQs",
-    iconName: <LayoutDashboard width={20} height={20} />,
+    iconName: <Headset  width={20} height={20} />,
     href: "/faqs",
     prefetch: true
   },

@@ -2,7 +2,7 @@
 import React from "react";
 import './layout.css'
 import HeaderLayout from "./header-layout";
-import Sidebar from "./sidebar";
+import SidebarLeft from "./sidebar-left";
 
 function Layout({ children }: {
   children: React.ReactNode
@@ -14,7 +14,7 @@ function Layout({ children }: {
       </div>
       
       <div className="leftSide">
-        <Sidebar />
+        <SidebarLeft />
       </div>
      
       <div className="body">{children}</div>
