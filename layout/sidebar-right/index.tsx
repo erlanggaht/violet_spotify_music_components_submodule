@@ -3,6 +3,7 @@ import { EllipsisVertical, Play } from 'lucide-react'
 import { ArtistsAPI } from '@/lib/API/artists.api'
 import { Avatar, AvatarFallback, AvatarImage } from '@/app/violet_spotify_music_components_submodule/avatar'
 import { TopTrackAPI } from '@/lib/API/top-track.api'
+import Image from 'next/image'
 
 function SidebarRight() {
   return (
@@ -120,7 +121,7 @@ export const TopTrack = () => {
           </div>
         </div>
 
-        <Play color='#b8b8b8' className='cursor-pointer' />
+        <Image src={'/icon/play.svg'} alt="play" height={16} width={16} className='cursor-pointer'/>
       </div>
     )
   })}

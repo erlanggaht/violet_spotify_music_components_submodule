@@ -1,13 +1,14 @@
 .layout {
   width: 100%;
-
   display: grid;
   grid:
     "header header header" auto
     "leftSide body rightSide" 1fr
     "footer footer footer" auto
     / 333px 1fr 350px;
-  gap: 8px;
+gap: 8px;
+transform: scaleX(0.93) scaleY(0.93); 
+  transform-origin: top;
 }
 
 .header { grid-area: header; }
