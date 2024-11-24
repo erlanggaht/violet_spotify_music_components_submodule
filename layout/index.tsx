@@ -10,7 +10,7 @@ function Layout({ children }: {
 }) {
   return (
     <section className="layout">
-      <div className="header sticky top-0 backdrop-blur rounded-lg mt-[20px]">
+      <div className="header sticky top-0 backdrop-blur rounded-lg mt-[20px] z-50">
         <HeaderLayout />
       </div>
 

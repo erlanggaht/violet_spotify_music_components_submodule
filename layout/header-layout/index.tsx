@@ -7,7 +7,7 @@ import { Bell } from 'lucide-react'
 import Dot from '@/app/violet_spotify_music_components_submodule/dot'
 import MenubarConsumer, { TypeListMenuItem } from '../../menubar/menubar-consumer'
 import { useRouter } from 'next/navigation'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import '../layout.css'
 function HeaderLayout() {
   return (
@@ -59,6 +59,7 @@ const SearchInput = () => {
 // User Header
 const UserHeader = () => {
   const router = useRouter()
+  const { data } = useSession()
   const listMenuItem: TypeListMenuItem = [
     {
       name: "Dashboard",
@@ -74,19 +75,26 @@ const UserHeader = () => {
     }
   ]
 
+  // Variable Profile
+  const username = data?.user?.name
+  const imageUrl = data?.user?.images?.[0]?.url || 'https://github.com/shadcn.png'
+  const imageHeight = data?.user?.images?.[0]?.height || 32
+  const imageWidth = data?.user?.images?.[0]?.width || 32
+  const typeProduct = data?.user?.product
+
   return (
     <MenubarConsumer listMenuItem={listMenuItem}>
       <div className='flex gap-6 w-full'>
         <Avatar height={52} width={52}>
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarImage src={imageUrl} alt="@shadcn" height={imageHeight} width={imageWidth} />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
 
 
         <div className='flex items-center justify-between w-full text-left'>
           <div className='w-full'>
-            <h2 className='text-xl'>Tarisa</h2>
-            <p className='text-xs leading-2 mt-1 text-whitegrey tracking-wider'>Blog Premium</p>
+            <h2 className='text-xl capitalize'>{username}</h2>
+            <p className='text-xs leading-2 mt-1 text-whitegrey tracking-wider capitalize'>{typeProduct}</p>
           </div>
           <div className='profile-area-icon relative'>
             <Bell width={30} height={28} />
