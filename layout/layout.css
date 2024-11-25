@@ -6,23 +6,31 @@
     "leftSide body rightSide" 1fr
     "footer footer footer" auto
     / 333px 1fr 350px;
-gap: 8px;
-transform: scaleX(0.93) scaleY(0.93); 
+  gap: 8px;
+  transform: scaleX(0.93) scaleY(0.93);
   transform-origin: top;
 }
 
-.header { grid-area: header; }
-.leftSide { grid-area: leftSide; }
-.body { grid-area: body; }
-.rightSide { grid-area: rightSide; }
-.footer { grid-area: footer; }
-
+.header {
+  grid-area: header;
+}
+.leftSide {
+  grid-area: leftSide;
+}
+.body {
+  grid-area: body;
+}
+.rightSide {
+  grid-area: rightSide;
+}
+.footer {
+  grid-area: footer;
+}
 
 /* Header */
 .title-header {
-  @apply text-3xl font-bold 
+  @apply text-3xl font-bold;
 }
-
 
 /* Search */
 
@@ -30,4 +38,10 @@ transform: scaleX(0.93) scaleY(0.93);
   @apply bg-search-icon bg-no-repeat;
   background-position: 24px 14px;
   background-size: 28px;
+}
+
+.searchInputMobile {
+  @apply bg-search-icon bg-no-repeat;
+  background-position: 14px 10px;
+  background-size: 24px;
 }

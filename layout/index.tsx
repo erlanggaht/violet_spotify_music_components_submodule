@@ -5,14 +5,20 @@ import HeaderLayout from "@/app/violet_spotify_music_components_submodule/layout
 import SidebarLeft from "@/app/violet_spotify_music_components_submodule/layout/sidebar-left";
 import SidebarRight from "@/app/violet_spotify_music_components_submodule/layout/sidebar-right";
 import PlayerBottom from "./player-bottom";
+import { useScreen } from "@/lib/hooks/useScreen";
+import { cn } from "@/lib/utils";
+import { useMediaQuery } from "@/lib/hooks/useMediaQuery";
+import { Constant_ScreenMediaQuery } from "@/lib/contants";
 
 function Layout({ children }: {
   children: React.ReactNode
 }) {
+  const screenTablet = useMediaQuery(Constant_ScreenMediaQuery.tablet)
+
   return (
     <>
-      <section className="layout">
-      <div className="header sticky top-0 backdrop-blur rounded-lg pt-[20px] z-50">
+      <section className={cn({"layout": screenTablet})}>
+      <div className={cn('sticky top-0 backdrop-blur rounded-lg pt-[20px] z-50 w-full', {"header": screenTablet})}>
         <HeaderLayout />
       </div>
 
