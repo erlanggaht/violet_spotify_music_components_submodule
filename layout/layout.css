@@ -11,6 +11,24 @@
   transform-origin: top;
 }
 
+@media screen and (max-width:750px) {
+  .layout {
+    display: grid;
+    grid:
+      "header header header" auto
+      "leftSide body rightSide" 1fr
+      "footer footer footer" auto
+      / 333px 1fr 1fr;
+  }
+
+}
+
+@media screen and (max-width:518px) {
+  .header {
+    grid-area: inherit !important;
+  }
+}
+
 .header {
   grid-area: header;
 }
@@ -27,7 +45,7 @@
   grid-area: footer;
 }
 
-/* Header */
+/* Headers */
 .title-header {
   @apply text-3xl font-bold;
 }

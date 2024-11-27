@@ -12,15 +12,16 @@ import '../layout.css'
 import { cn } from '@/lib/utils'
 import { useMediaQuery } from '@/lib/hooks/useMediaQuery'
 import { Constant_ScreenMediaQuery } from '@/lib/contants'
+import DetectMediaQuery from '@/lib/helper/detect-media-query'
 
 function HeaderLayout() {
   const screenDesktop = useMediaQuery(Constant_ScreenMediaQuery.desktop)
   const screenTablet = useMediaQuery(Constant_ScreenMediaQuery.tablet)
   const screenMobile = useMediaQuery(Constant_ScreenMediaQuery.mobile)
 
-  if (screenDesktop) {
+  if(screenDesktop) {
     return (
-      <header className='flex '>
+      <header className='flex'>
         <div className='flex-grow-0 flex px-4 items-center w-header_left'>
           <TitleHeader />
         </div>
@@ -37,7 +38,7 @@ function HeaderLayout() {
       </header>
     )
   }
-
+  
   if (screenTablet) {
     return <header>
       <div className='flex items-center w-full'>
@@ -83,42 +84,32 @@ const TitleHeader = () => {
 
 // SEARCH
 const SearchInput = () => {
-  const screenMobile = useMediaQuery(Constant_ScreenMediaQuery.mobile)
-  const screenTablet = useMediaQuery(Constant_ScreenMediaQuery.tablet)
-  const screenDesktop = useMediaQuery(Constant_ScreenMediaQuery.desktop)
+  const isMobile = DetectMediaQuery('mobile')
 
   const [value, setValue] = useState('')
 
-  if (screenDesktop || screenTablet) {
-    return (
-      <>
-        <Input
-          placeholder='search music, artist, genre'
-          className={cn('bg-darkslategrey rounded-search h-[53px] pl-20 text-sm capitalize placeholder:font-medium w-[90%] mx-auto searchInput text-whitegrey', { "w-[120px] mx-0": screenMobile })}
-          onChange={(e) => setValue(e.target.value)}
-          value={value}
-        />
-      </>
-    )
-  }
+  // conditional class
+  const classDesktop = 'bg-darkslategrey rounded-search h-[53px] pl-20 text-sm capitalize placeholder:font-medium w-[90%] mx-auto searchInput text-whitegrey'
+  const classMobile = 'bg-darkslategrey rounded-search h-[45px] pl-12 truncate text-sm capitalize placeholder:font-xs searchInputMobile text-whitegrey w-[120px] mx-0'
 
-  if (screenMobile) {
-    return (
-      <>
-        <Input
-          placeholder='search music, artist, genre'
-          className={'bg-darkslategrey rounded-search h-[45px] pl-12 truncate text-sm capitalize placeholder:font-xs searchInputMobile text-whitegrey w-[120px] mx-0'}
-          onChange={(e) => setValue(e.target.value)}
-          value={value}
-        />
-      </>
-    )
-  }
+  return (
+    <>
+      <Input
+        placeholder='search music, artist, genre'
+        className={cn(classDesktop,{
+          [classMobile]: isMobile
+        })}
+        onChange={(e) => setValue(e.target.value)}
+        value={value}
+      />
+    </>
+  )
 }
+
 
 // User Header
 const UserHeader = () => {
-  const screenMobile = useMediaQuery('(max-width: 750px)')
+  const isMobile = DetectMediaQuery('mobile')
 
   const router = useRouter()
   const { data } = useSession()
@@ -143,39 +134,30 @@ const UserHeader = () => {
   const imageHeight = data?.user?.images?.[0]?.height || 32
   const imageWidth = data?.user?.images?.[0]?.width || 32
   const typeProduct = data?.user?.product
-
-  if (screenMobile) {
-    return (
-      <MenubarConsumer listMenuItem={listMenuItem}>
-        <div>
-          <Avatar height={47} width={47}>
-            <AvatarImage src={imageUrl} alt="@shadcn" height={imageHeight} width={imageWidth} />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-        </div>
-      </MenubarConsumer>
-    )
-  }
+  const avatarSize = isMobile ? 45 : 52
 
   return (
     <MenubarConsumer listMenuItem={listMenuItem}>
-      <div className='flex gap-6 w-full'>
-        <Avatar height={52} width={52}>
+      <div className={cn({
+      'flex gap-6 w-full': !isMobile
+      })}>
+        <Avatar height={avatarSize} width={avatarSize}>
           <AvatarImage src={imageUrl} alt="@shadcn" height={imageHeight} width={imageWidth} />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
 
-
-        <div className='flex items-center justify-between w-full text-left'>
-          <div className='w-full'>
-            <h2 className='text-xl capitalize'>{username}</h2>
-            <p className='text-xs leading-2 mt-1 text-whitegrey tracking-wider capitalize'>{typeProduct}</p>
+        {!isMobile &&
+          <div className='flex items-center justify-between w-full text-left'>
+            <div className='w-full'>
+              <h2 className='text-xl capitalize'>{username}</h2>
+              <p className='text-xs leading-2 mt-1 text-whitegrey tracking-wider capitalize'>{typeProduct}</p>
+            </div>
+            <div className='profile-area-icon relative'>
+              <Bell width={30} height={28} />
+              <Dot height={16} width={16} classNames='base_gradient_background absolute top-2.5 -right-1' />
+            </div>
           </div>
-          <div className='profile-area-icon relative'>
-            <Bell width={30} height={28} />
-            <Dot height={16} width={16} classNames='base_gradient_background absolute top-2.5 -right-1' />
-          </div>
-        </div>
+        }
       </div>
     </MenubarConsumer>
   )
