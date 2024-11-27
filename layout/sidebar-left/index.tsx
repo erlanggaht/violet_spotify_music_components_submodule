@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 
 function SidebarLeft() {
   return (
-    <aside className='mt-14'>
+    <aside>
       {/* Menu */}
       <div id='Menu' >
         <TitleSidebarMenu title={"Menu"} />
