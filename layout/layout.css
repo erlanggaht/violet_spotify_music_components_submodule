@@ -31,6 +31,7 @@
 
 .header {
   grid-area: header;
+  position: sticky;
 }
 .leftSide {
   grid-area: leftSide;
@@ -45,6 +46,35 @@
   grid-area: footer;
 }
 
+
+@media (min-width:750px ) and (max-width: 1280px) {
+  .layout {
+    transform: scaleX(1) scaleY(1);
+  }
+  .header {
+    position: relative ;
+  }
+}
+
+@media screen and (max-width:750px) {
+  .layout {
+    display: grid;
+    grid:
+      "header header header" auto
+      "leftSide body rightSide" 1fr
+      "footer footer footer" auto
+      / 333px 1fr 1fr;
+  }
+  .header {
+    position: relative;
+  }
+}
+
+@media screen and (max-width:518px) {
+  .header {
+    grid-area: inherit !important;
+  }
+}
 /* Headers */
 .title-header {
   @apply text-3xl font-bold;
