@@ -7,7 +7,7 @@
     "footer footer footer" auto
     / 333px 1fr 350px;
   gap: 8px;
-  transform: scaleX(0.93) scaleY(0.93);
+  transform: scaleX(0.90) scaleY(0.90);
   transform-origin: top;
 }
 
@@ -26,6 +26,8 @@
 }
 .footer {
   grid-area: footer;
+  transform: scaleX(0.95) scaleY(0.95);
+
 }
 
 
