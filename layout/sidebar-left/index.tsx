@@ -63,7 +63,7 @@ export const sidebarMenuItem: TypeSidebarItem = [
   {
     name: "Dashboard",
     iconName: <LayoutDashboard width={20} height={20} />,
-    href: "/",
+    href: "/dashboard",
     prefetch: true
   },
   {

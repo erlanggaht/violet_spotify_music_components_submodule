@@ -32,7 +32,7 @@ function Layout({ children }: {
       {!isDesktop && <MenuSheet />}
 
       <section className="layout">
-        <div className='sticky top-0 backdrop-blur rounded-lg pt-[20px] z-50 w-full header mb-14'>
+        <div className='sticky top-0 backdrop-blur rounded-lg pt-[10px] z-50 w-full header mb-14'>
           <HeaderLayout />
         </div>
 
