@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 function SidebarRight() {
   return (
-    <aside className='mt-14'>
+    <aside className='mt-12'>
       {/* Top Artist */}
       <div id='TopArtist' >
         <TitleSidebarMenu title={"Top Artist"} />
