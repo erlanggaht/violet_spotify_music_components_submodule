@@ -6,7 +6,7 @@ function CardDiscoverGenre({title,description} : {
     description: string
 }) {
     return (
-        <div className='bg-gitar bg-cover bg-center rounded-card h-[269px] w-auto relative'>
+        <div className='bg-gitar bg-cover bg-center rounded-card h-[309px] w-[279px] relative'>
             <div className='flex justify-between backdrop-blur-sm bg-white/30 rounded-b-[inherit] absolute bottom-0 left-0 right-0 px-5 py-4'>
                 <div>
                     <p className='text-lg font-medium truncate max-w-[230px]'>{title}</p>
