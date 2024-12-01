@@ -33,7 +33,7 @@ function Layout({ children }: {
       {!isDesktop && <MenuSheet />}
 
       <section className="layout">
-        <div className='sticky top-0 backdrop-blur rounded-lg pt-[20px] z-50 w-full header mb-14'>
+        <div className='sticky top-0 backdrop-blur rounded-lg pt-[20px] z-50 w-full header mb-10'>
           <HeaderLayout />
         </div>
 
@@ -69,20 +69,20 @@ const MenuSheet = () => {
       <SheetTrigger asChild className='fixed w-[51px] h-[51px] top-[21px] left-7 z-[100] bg-red-500'>
         <Menu className="bg-transparent text-transparent" />
       </SheetTrigger>
-      <SheetContent side={'left'} className="bg-background border-0">
+      <SheetContent side={'left'} id="SheetContent" className="bg-background border-0 overflow-auto">
         <SheetHeader>
           <SheetTitle></SheetTitle>
           <SheetDescription>
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4 py-4 ">
           <SidebarLeft />
         </div>
-        <SheetFooter>
+        {/* <SheetFooter>
           <SheetClose asChild>
             <Button type="submit">Save changes</Button>
           </SheetClose>
-        </SheetFooter>
+        </SheetFooter> */}
       </SheetContent>
     </Sheet>
   )
